@@ -1,5 +1,5 @@
 import fetch from 'node-fetch'
-import { login, openSupplyDrop } from './io/webhallen.js'
+import { login, openSupplyDrop } from './io/webhallen.mjs'
 
 (async () => {
   const authCookie = await login()

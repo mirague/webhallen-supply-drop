@@ -1,5 +1,5 @@
 import chalk from 'chalk'
-import { sendPushNotification } from './pushover.js'
+import { sendPushNotification } from './pushover.mjs'
 
 const log = {
   error: (...args) => {

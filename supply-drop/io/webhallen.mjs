@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 import chalk from 'chalk'
-import log from './log.js'
-import { sendPushNotification } from './pushover.js'
+import log from './log.mjs'
+import { sendPushNotification } from './pushover.mjs'
 
 function extractSetCookie(setCookie) {
   const webhallen = setCookie.match(/webhallen=([a-zA-Z0-9]*)/g)
