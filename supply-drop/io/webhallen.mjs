@@ -27,6 +27,7 @@ export async function login(username, password) {
 
   if (r.status >= 300) {
     logger.error(`Webhallen login: unexpected status - got ${r.status} but expected 200`)
+    process.exit(0)
     return
   }
 
