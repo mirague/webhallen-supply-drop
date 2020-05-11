@@ -10,6 +10,7 @@
     "node-fetch": "^2.6.0"
   },
   "scripts": {
-    "start": "node -r dotenv/config index.mjs"
+    "start": "node -r dotenv/config index.mjs",
+    "node11": "node --experimental-modules -r dotenv/config index.mjs"
   }
 }
