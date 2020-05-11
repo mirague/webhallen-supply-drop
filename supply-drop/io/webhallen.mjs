@@ -1,6 +1,5 @@
 import fetch from 'node-fetch'
-import chalk from 'chalk'
-import log from './log.mjs'
+import logger from './log.mjs'
 import { sendPushNotification } from './pushover.mjs'
 
 function extractSetCookie(setCookie) {
@@ -27,7 +26,7 @@ export async function login(username, password) {
   })
 
   if (r.status >= 300) {
-    log.error(`Webhallen login: unexpected status - got ${r.status} but expected 200`)
+    logger.error(`Webhallen login: unexpected status - got ${r.status} but expected 200`)
     return
   }
 
@@ -43,21 +42,22 @@ export async function openSupplyDrop(cookie) {
   })
 
   if (r.status === 403) {
-    console.warn(chalk.yellow('Got a 403 when trying to open supply drop, this likely means it\'s not ready yet'))
+    logger.warn('Got a 403 when trying to open supply drop, this likely means it\'s not ready yet')
     return
   } else if (r.status !== 200) {
-    log.error(`Webhallen supply-drop: unexpected status - got ${r.status} but expected 200`)
+    logger.error(`Webhallen supply-drop: unexpected status - got ${r.status} but expected 200`)
     return
   }
-  
+
   const json = await r.json()
   
   if (!json.drops) {
-    log.error('Missing `drops` in response body')
+    logger.error('Missing `drops` in response body')
     return
   }
 
   json.drops.forEach(drop => {
-    log.info(`${drop.name} (${drop.description})`)
+    logger.info(`${drop.name} (${drop.description})`)
+    sendPushNotification(`${drop.name} (${drop.description})`)
   })
 }
