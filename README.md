@@ -2,6 +2,8 @@
 Simple Node script to open your weekly supply drop, so you don't have to! 
 Sends a push notification when a supply drop is opened or a fatal error occurs. You could have this run every week on a Raspberry Pi with a CRON job.
 
+<img src="https://i.imgur.com/DeHEHRM.jpg" alt="Notification on Phone" width="300" />
+
 ## Quick start
 1. `cp .env.template .env`
 2. Edit `.env` and set all vars accordingly
