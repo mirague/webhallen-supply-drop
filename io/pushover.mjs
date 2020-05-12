@@ -7,7 +7,7 @@ export function hasSetupPushover() {
 }
 
 export async function sendPushNotification(...message) {
-  if (!hasSetupPushover()) { return}
+  if (!hasSetupPushover()) { return }
   
   if (message.join) {
     message = message.join(' ')
