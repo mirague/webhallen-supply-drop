@@ -29,6 +29,7 @@ export async function sendPushNotification(...message) {
 
   if (response.status !== 200) {
     logger.error(`Unexpected status from PushOver API: got ${response.status} but expected 200`)
+    return
   }
   
   logger.info('Successfully sent PushOver Notification')
