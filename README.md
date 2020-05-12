@@ -1,5 +1,6 @@
 # Webhallen Supply Drop opener
-Simple script to open the weekly supply drop. Sends a push notification using [Pushover](https://pushover.net/api) when a supply drop is opened or a fatal error occurs. You could have this run every week on a Raspberry Pi with a CRON job.
+Simple Node script to open your weekly supply drop, so you don't have to! 
+Sends a push notification when a supply drop is opened or a fatal error occurs. You could have this run every week on a Raspberry Pi with a CRON job.
 
 ## Quick start
 1. `cp .env.template .env`
@@ -22,3 +23,15 @@ Note that I'm running this on an old Raspberry Pi (arm6), meaning that the lates
 2. Add the above snippet to the end of the file
 3. `ctrl + o` to save
 4. `ctrl + x` to quit
+
+## Push Notifications
+To setup Push notifications you need to setup an account with [Pushover](https://pushover.net/api). You can try it out for free for 7 days and after that choose to [unlock forever for 5$ per device platform](https://pushover.net/pricing) (e.g. unlock it for all Apple devices).
+
+1. [Create your account](https://pushover.net/signup)
+2. Download the Pushover app on your phone and login
+3. Create [a new Pushover app](https://pushover.net/apps) and call it something like "Supply Drop". You'll get a code, this is the `PUSHOVER_TOKEN` you should add in your `.env` file.
+4. Find your "User Key" [on the Pushover dashboard](https://pushover.net/) and set this to `PUSHOVER_USER`
+5. Done!
+
+## Logs
+All logs are written to `logs/app.log`
