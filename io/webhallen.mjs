@@ -13,7 +13,7 @@ function extractSetCookie(setCookie) {
   )
 }
 
-export async function login(username, password) {
+export async function getAuthCookie(username, password) {
   const r = await fetch('https://www.webhallen.com/api/login', {
     method: 'POST',
     headers: {
@@ -25,12 +25,12 @@ export async function login(username, password) {
     })
   })
 
-  if (r.status >= 300) {
+  if (r.status !== 200) {
     logger.error(`Webhallen login: unexpected status - got ${r.status} but expected 200`)
     process.exit(0)
     return
   }
-
+  
   return extractSetCookie(r.headers.get('set-cookie'))
 }
 

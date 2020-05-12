@@ -2,7 +2,13 @@ import fetch from 'node-fetch'
 import chalk from 'chalk'
 import logger from './log.mjs'
 
+export function hasSetupPushover() {
+  return process.env.PUSHOVER_TOKEN && process.env.PUSHOVER_USER
+}
+
 export async function sendPushNotification(...message) {
+  if (!hasSetupPushover()) { return}
+  
   if (message.join) {
     message = message.join(' ')
   }
