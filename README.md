@@ -26,7 +26,7 @@ All logs are written to `logs/app.log`
 ## Scheduled run with CRON
 Supply drops are replenished every Monday-night. The below CRON entry will run this script every Tuesday morning at 8am:
 ```cron
-0 8 * * TUE cd ~/supply-drop && /usr/local/bin/npm run node11
+0 8 * * TUE (cd ~/scripts-bin/supply-drop && /usr/local/bin/node --experimental-modules -r dotenv/config index.mjs) > /var/log/webhallen-supplydrop.log
 ```
 
 You should change the paths to where you've cloned this repo.
